@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dolibar_flutter">
+    package="com.example.animated_login">
    <application
-        android:label="dolibar_flutter"
+        android:label="animated_login"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

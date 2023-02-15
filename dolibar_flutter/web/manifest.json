@@ -1,6 +1,6 @@
 {
-    "name": "dolibar_flutter",
-    "short_name": "dolibar_flutter",
+    "name": "animated_login",
+    "short_name": "animated_login",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
