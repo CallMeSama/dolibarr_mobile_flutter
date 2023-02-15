@@ -90,7 +90,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Hello, Hosain",
+                            "Hello, Awa",
                             style: TextStyle(
                                 color: Colors.black.withOpacity(0.85),
                                 fontSize: 30,
@@ -98,7 +98,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                           ),
                           SizedBox(height: 6),
                           Text(
-                            "You have 2 new\nimportant messages today",
+                            "Voici la\nliste des utilisateurs créés",
                             style: TextStyle(
                                 color: Colors.black54,
                                 fontSize: 23,
