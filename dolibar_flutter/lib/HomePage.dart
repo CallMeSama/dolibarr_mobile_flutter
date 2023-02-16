@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'Body.dart';
 
-class HomPage extends StatelessWidget {
-  const HomPage({
+class HomePage extends StatelessWidget {
+  const HomePage({
     super.key,
   });
 

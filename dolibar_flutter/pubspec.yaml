@@ -66,6 +66,7 @@ flutter:
       - assets/
       - assets/coin_fleur.png
       - assets/coin_fleur2.png
+      - assets/icon_dolibarr1.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
