@@ -1,3 +1,4 @@
+import 'package:animated_login/ProductModule/products.dart';
 import 'package:flutter/material.dart';
 import 'package:ternav_icons/ternav_icons.dart';
 
@@ -33,7 +34,12 @@ class SideMenu extends StatelessWidget {
           DrawerListTile(
             icon: TernavIcons.lightOutline.menu,
             title: "Produits",
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Products()),
+              );
+            },
           ),
           DrawerListTile(
             icon: TernavIcons.lightOutline.user_2,
