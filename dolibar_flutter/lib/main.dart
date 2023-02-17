@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 import 'package:animated_login/presentation/login_screen.dart';
-=======
-import 'package:dolibar_flutter/login.dart';
-import 'package:dolibar_flutter/Users.dart';
->>>>>>> mariama
 import 'package:flutter/material.dart';
 import 'package:animated_login/presentation/widgets/home_page.dart';
 import 'presentation/widgets/messages_list.dart';
@@ -19,7 +14,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-<<<<<<< HEAD
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -34,14 +28,5 @@ class MyApp extends StatelessWidget {
           ),
         ),
         home:  HomePage());
-=======
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Users(),
-    );
->>>>>>> mariama
   }
 }
