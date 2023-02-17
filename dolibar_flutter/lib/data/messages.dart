@@ -1,11 +1,10 @@
-import 'package:animated_login/models/message.dart';
+import '../models/message.dart';
 
 List<Message> staticMessages = [
   Message(
     contact: "Marie Waly Fall",
     messageTitle: "App Designer",
-    message:
-        "77 578 29 5",
+    message: "77 578 29 5",
     date: "Actif",
     image: "assets/images/avatar_1.png",
     active: true,
@@ -50,5 +49,4 @@ List<Message> staticMessages = [
     active: false,
     image: "assets/images/avatar_3.png",
   ),
-
 ];

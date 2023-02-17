@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.0.0-204.0.dev <4.0.0"
+  sdk: '>=3.0.0-204.0.dev <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -29,15 +29,21 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^0.13.3
+  another_flushbar: ^1.12.29
+    
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^10.2.1
+  flutter_session_manager:
+  carousel_slider: ^4.2.1
+  carousel_indicator: ^1.0.6
+  flutter_keyboard_visibility: ^5.4.0
   fl_chart: ^0.36.1
   ternav_icons: ^1.0.0
-  percent_indicator: ^4.2.2
   dashboard: ^0.0.3+1
 
 dev_dependencies:
@@ -70,12 +76,16 @@ flutter:
     - assets/images/avatar_3.png
     - assets/images/avatar_4.png
     - assets/images/avatar_5.png
-    - assets/images/slash_screen.png
-    - assets/images/box/
-    - assets/images/pic/
-    - assets/images/
-
-
+    - assets/images/Bienvenue_background.png
+    - assets/images/icon_dolibarr1.png
+    - assets/images/images.jpg
+    - assets/images/box/1.png
+    - assets/images/box/2.png
+    - assets/images/box/3.png
+    - assets/images/pic/img1.png
+    - assets/images/pic/img2.png
+    - assets/images/pic/img3.png
+    - assets/images/user.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -88,11 +98,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Poppins
-      fonts:
-        - asset: fonts/Poppins-Regular.ttf
-
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

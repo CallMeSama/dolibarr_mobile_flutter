@@ -7,14 +7,14 @@ class PasswordField extends StatefulWidget {
   const PasswordField(
       {super.key,
       required this.passwordController,
-      required this.fadePassword});
+      required this.fadePassword,
+      required Null Function() onPressed});
 
   @override
   State<PasswordField> createState() => _PasswordFieldState();
 }
 
 class _PasswordFieldState extends State<PasswordField> {
-  String? _password = null;
   double bottomAnimationValue = 0;
   double opacityAnimationValue = 0;
   late TextEditingController passwordController;
@@ -56,16 +56,8 @@ class _PasswordFieldState extends State<PasswordField> {
                 child: TextFormField(
                   controller: passwordController,
                   focusNode: node,
-                  decoration: InputDecoration(hintText: "Password"),
+                  decoration: InputDecoration(hintText: "Nouveau mot de passe"),
                   obscureText: obscure,
-                  validator: (String? value){
-                    if(value!.isEmpty) {
-                      //return '*Champ obligatoire';
-                    }else if (value.length < 3) {
-                      return 'Le mot de passe doit comporter au moins 3 caractères';
-                    }
-                    return null;
-                  },
                   onChanged: (value) {
                     if (value.isEmpty) {
                       setState(() {
@@ -80,9 +72,6 @@ class _PasswordFieldState extends State<PasswordField> {
                         });
                       }
                     }
-                  },
-                  onSaved: (value) {
-                    _password = value;
                   },
                 ),
               )),

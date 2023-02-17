@@ -37,7 +37,7 @@ class SideMenu extends StatelessWidget {
           ),
           DrawerListTile(
             icon: TernavIcons.lightOutline.user_2,
-            title: "Tiers",
+            title: "Utilisateurs",
             onTap: () {},
           ),
           DrawerListTile(

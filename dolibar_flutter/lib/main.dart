@@ -1,6 +1,6 @@
 import 'package:animated_login/presentation/login_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:animated_login/presentation/widgets/home_page.dart';
 import 'presentation/widgets/messages_list.dart';
 
 void main() {
@@ -27,6 +27,6 @@ class MyApp extends StatelessWidget {
             border: OutlineInputBorder(borderSide: BorderSide.none),
           ),
         ),
-        home: const LoginScreen());
+        home:  HomePage());
   }
 }

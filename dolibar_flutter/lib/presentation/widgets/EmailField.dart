@@ -1,30 +1,33 @@
-import 'package:animated_login/styles/colors.dart';
+import 'package:animated_login/presentation/widgets/colors.dart';
 import 'package:flutter/material.dart';
 
-class UsernameField extends StatefulWidget {
-  final bool fadeUsername;
-  final TextEditingController usernameController;
-  const UsernameField(
-      {super.key, required this.usernameController, required this.fadeUsername});
+class EmailField extends StatefulWidget {
+  final bool fadeEmail;
+  final TextEditingController emailController;
+  const EmailField(
+      {super.key,
+      required this.emailController,
+      required this.fadeEmail,
+      required Null Function() onPressed});
 
   @override
-  State<UsernameField> createState() => _UsernameFieldState();
+  State<EmailField> createState() => _EmailFieldState();
 }
 
-class _UsernameFieldState extends State<UsernameField>
+class _EmailFieldState extends State<EmailField>
     with SingleTickerProviderStateMixin {
   double bottomAnimationValue = 0;
   double opacityAnimationValue = 0;
   EdgeInsets paddingAnimationValue = EdgeInsets.only(top: 22);
 
-  late TextEditingController usernameController;
+  late TextEditingController emailController;
   late AnimationController _animationController;
   late Animation<Color?> _animation;
 
   FocusNode node = FocusNode();
   @override
   void initState() {
-    usernameController = widget.usernameController;
+    emailController = widget.emailController;
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
     final tween = ColorTween(begin: Colors.grey.withOpacity(0), end: blueColor);
@@ -54,36 +57,44 @@ class _UsernameFieldState extends State<UsernameField>
       children: [
         TweenAnimationBuilder<double>(
           duration: Duration(milliseconds: 300),
-          tween: Tween(begin: 0, end: widget.fadeUsername ? 0 : 1),
+          tween: Tween(begin: 0, end: widget.fadeEmail ? 0 : 1),
           builder: ((_, value, __) => Opacity(
                 opacity: value,
                 child: TextFormField(
-                  controller: usernameController,
+                  controller: emailController,
                   focusNode: node,
-                  decoration: InputDecoration(
-                    hintText: "Username",
-                    isCollapsed: true,
-                    ),
-                  validator: (String? value) {
+                  decoration: InputDecoration(hintText: "Email"),
+                   validator: (String? value) {
                     if(value!.isEmpty){
-                      //return "*Champ obligatoire";
+                      return "*Champ obligatoire";
                     }
                     return null;
                   },
-                  keyboardType: TextInputType.name,
-                  onChanged: (value)  {
+                  keyboardType: TextInputType.emailAddress,
+                  onChanged: (value) async {
                     if (value.isNotEmpty) {
+                      if (isValidEmail(value)) {
                         setState(() {
                           bottomAnimationValue = 0;
                           opacityAnimationValue = 1;
                           paddingAnimationValue = EdgeInsets.only(top: 0);
                         });
                         _animationController.forward();
-                    } 
+                      } else {
+                        _animationController.reverse();
+                        setState(() {
+                          bottomAnimationValue = 1;
+                          opacityAnimationValue = 0;
+                          paddingAnimationValue = EdgeInsets.only(top: 22);
+                        });
+                      }
+                    } else {
+                      setState(() {
+                        bottomAnimationValue = 0;
+                      });
+                    }
                   },
-                 
                 ),
-                
               )),
         ),
         Positioned.fill(
@@ -91,7 +102,7 @@ class _UsernameFieldState extends State<UsernameField>
             alignment: Alignment.bottomCenter,
             child: AnimatedContainer(
               duration: Duration(milliseconds: 500),
-              width: widget.fadeUsername ? 0 : 300,
+              width: widget.fadeEmail ? 0 : 300,
               child: TweenAnimationBuilder<double>(
                 tween: Tween(begin: 0, end: bottomAnimationValue),
                 curve: Curves.easeIn,
@@ -111,7 +122,7 @@ class _UsernameFieldState extends State<UsernameField>
             duration: Duration(milliseconds: 500),
             padding: paddingAnimationValue,
             child: TweenAnimationBuilder<double>(
-              tween: Tween(begin: 0, end: widget.fadeUsername ? 0 : 1),
+              tween: Tween(begin: 0, end: widget.fadeEmail ? 0 : 1),
               duration: Duration(milliseconds: 700),
               builder: ((context, value, child) => Opacity(
                     opacity: value,
@@ -134,9 +145,9 @@ class _UsernameFieldState extends State<UsernameField>
     );
   }
 
- /* bool isValidusername(String username) {
+  bool isValidEmail(String email) {
     return RegExp(
             r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-        .hasMatch(username);
-  }*/
+        .hasMatch(email);
+  }
 }

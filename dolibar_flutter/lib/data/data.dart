@@ -11,7 +11,7 @@ final List<Module> module = [
       backImage: "assets/images/box/1.png",
       color: kDarkBlue),
   Module(
-      text: "Tiers",
+      text: "Utilisateurs",
       imageUrl: "assets/images/pic/img2.png",
       backImage: "assets/images/box/2.png",
       color: kOrange),
