@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.0-204.0.dev <4.0.0'
+  sdk: '>=3.0.0-204.0.dev <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -30,7 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.3
-  flushbar: ^1.10.4
+  another_flushbar: ^1.12.29
     
 
 
@@ -42,6 +42,9 @@ dependencies:
   carousel_slider: ^4.2.1
   carousel_indicator: ^1.0.6
   flutter_keyboard_visibility: ^5.4.0
+  fl_chart: ^0.36.1
+  ternav_icons: ^1.0.0
+  dashboard: ^0.0.3+1
 
 dev_dependencies:
   flutter_test:
@@ -76,9 +79,13 @@ flutter:
     - assets/images/Bienvenue_background.png
     - assets/images/icon_dolibarr1.png
     - assets/images/images.jpg
-
-
-
+    - assets/images/box/1.png
+    - assets/images/box/2.png
+    - assets/images/box/3.png
+    - assets/images/pic/img1.png
+    - assets/images/pic/img2.png
+    - assets/images/pic/img3.png
+    - assets/images/user.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
