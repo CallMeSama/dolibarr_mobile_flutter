@@ -21,6 +21,8 @@ class _EmailFieldState extends State<EmailField>
   late Animation<Color?> _animation;
 
   FocusNode node = FocusNode();
+  final String emailPattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
   get blueColor => null;
   @override
@@ -59,34 +61,43 @@ class _EmailFieldState extends State<EmailField>
           builder: ((_, value, __) => Opacity(
                 opacity: value,
                 child: TextFormField(
-                  controller: emailController,
-                  focusNode: node,
-                  decoration: InputDecoration(hintText: "Email"),
-                  keyboardType: TextInputType.emailAddress,
-                  onChanged: (value) async {
-                    if (value.isNotEmpty) {
-                      if (isValidEmail(value)) {
+                    controller: emailController,
+                    focusNode: node,
+                    decoration: InputDecoration(hintText: "Email"),
+                    keyboardType: TextInputType.emailAddress,
+                    onChanged: (value) async {
+                      if (value.isNotEmpty) {
+                        if (isValidEmail(value)) {
+                          setState(() {
+                            bottomAnimationValue = 0;
+                            opacityAnimationValue = 1;
+                            paddingAnimationValue = EdgeInsets.only(top: 0);
+                          });
+                          _animationController.forward();
+                        } else {
+                          _animationController.reverse();
+                          setState(() {
+                            bottomAnimationValue = 1;
+                            opacityAnimationValue = 0;
+                            paddingAnimationValue = EdgeInsets.only(top: 22);
+                          });
+                        }
+                      } else {
                         setState(() {
                           bottomAnimationValue = 0;
-                          opacityAnimationValue = 1;
-                          paddingAnimationValue = EdgeInsets.only(top: 0);
-                        });
-                        _animationController.forward();
-                      } else {
-                        _animationController.reverse();
-                        setState(() {
-                          bottomAnimationValue = 1;
-                          opacityAnimationValue = 0;
-                          paddingAnimationValue = EdgeInsets.only(top: 22);
                         });
                       }
-                    } else {
-                      setState(() {
-                        bottomAnimationValue = 0;
-                      });
-                    }
-                  },
-                ),
+                    },
+                    validator: (value) {
+                      if ((value?.isEmpty)!) {
+                        return 'Veuillez saisir votre adresse email';
+                      }
+
+                      RegExp regExp = RegExp(emailPattern);
+                      if (!regExp.hasMatch(value!)) {
+                        return "Veuillez saisir une adresse email valide.";
+                      }
+                    }),
               )),
         ),
         Positioned.fill(
