@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 
-class PasswordField extends StatefulWidget {
-  final TextEditingController passwordController;
+class PasswordField2 extends StatefulWidget {
+  final TextEditingController password2Controller;
   final bool fadePassword;
 
-  const PasswordField(
+  const PasswordField2(
       {super.key,
-      required this.passwordController,
-      required this.fadePassword});
+      required this.password2Controller,
+      required this.fadePassword,
+      required Null Function() onPressed});
 
   @override
-  State<PasswordField> createState() => _PasswordFieldState();
+  State<PasswordField2> createState() => _PasswordField2State();
 }
 
-class _PasswordFieldState extends State<PasswordField> {
-  String? _password = null;
+class _PasswordField2State extends State<PasswordField2> {
   double bottomAnimationValue = 0;
   double opacityAnimationValue = 0;
-  late TextEditingController passwordController;
+  late TextEditingController password2Controller;
   bool obscure = true;
   FocusNode node = FocusNode();
   @override
   void initState() {
-    passwordController = widget.passwordController;
+    password2Controller = widget.password2Controller;
     node.addListener(() {
       if (!node.hasFocus) {
         setState(() {
@@ -34,7 +34,7 @@ class _PasswordFieldState extends State<PasswordField> {
           bottomAnimationValue = 1;
           opacityAnimationValue = 1;
         });
-        if (passwordController.text.isEmpty) {
+        if (password2Controller.text.isEmpty) {
           setState(() {
             bottomAnimationValue = 1;
           });
@@ -54,18 +54,11 @@ class _PasswordFieldState extends State<PasswordField> {
           builder: ((_, value, __) => Opacity(
                 opacity: value,
                 child: TextFormField(
-                  controller: passwordController,
+                  controller: password2Controller,
                   focusNode: node,
-                  decoration: InputDecoration(hintText: "Password"),
+                  decoration: InputDecoration(
+                      hintText: "Confirmez nouveau mot de passe"),
                   obscureText: obscure,
-                  validator: (String? value){
-                    if(value!.isEmpty) {
-                      //return '*Champ obligatoire';
-                    }else if (value.length < 3) {
-                      return 'Le mot de passe doit comporter au moins 3 caractères';
-                    }
-                    return null;
-                  },
                   onChanged: (value) {
                     if (value.isEmpty) {
                       setState(() {
@@ -80,9 +73,6 @@ class _PasswordFieldState extends State<PasswordField> {
                         });
                       }
                     }
-                  },
-                  onSaved: (value) {
-                    _password = value;
                   },
                 ),
               )),

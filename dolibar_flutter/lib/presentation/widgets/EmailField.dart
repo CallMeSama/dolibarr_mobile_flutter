@@ -1,30 +1,33 @@
-import 'package:animated_login/styles/colors.dart';
+import 'package:animated_login/presentation/widgets/colors.dart';
 import 'package:flutter/material.dart';
 
-class LinkField extends StatefulWidget {
-  final bool fadeLink;
-  final TextEditingController linkController;
-  const LinkField(
-      {super.key, required this.linkController, required this.fadeLink});
+class EmailField extends StatefulWidget {
+  final bool fadeEmail;
+  final TextEditingController emailController;
+  const EmailField(
+      {super.key,
+      required this.emailController,
+      required this.fadeEmail,
+      required Null Function() onPressed});
 
   @override
-  State<LinkField> createState() => _LinkField();
+  State<EmailField> createState() => _EmailFieldState();
 }
 
-class _LinkField extends State<LinkField>
+class _EmailFieldState extends State<EmailField>
     with SingleTickerProviderStateMixin {
   double bottomAnimationValue = 0;
   double opacityAnimationValue = 0;
   EdgeInsets paddingAnimationValue = EdgeInsets.only(top: 22);
 
-  late TextEditingController linkController;
+  late TextEditingController emailController;
   late AnimationController _animationController;
   late Animation<Color?> _animation;
 
   FocusNode node = FocusNode();
   @override
   void initState() {
-    linkController = widget.linkController;
+    emailController = widget.emailController;
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
     final tween = ColorTween(begin: Colors.grey.withOpacity(0), end: blueColor);
@@ -54,41 +57,41 @@ class _LinkField extends State<LinkField>
       children: [
         TweenAnimationBuilder<double>(
           duration: Duration(milliseconds: 300),
-          tween: Tween(begin: 0, end: widget.fadeLink ? 0 : 1),
+          tween: Tween(begin: 0, end: widget.fadeEmail ? 0 : 1),
           builder: ((_, value, __) => Opacity(
                 opacity: value,
                 child: TextFormField(
-                  controller: linkController,
+                  controller: emailController,
                   focusNode: node,
-                  decoration: InputDecoration(hintText: "https://"),
-                  keyboardType: TextInputType.name,
+                  decoration: InputDecoration(hintText: "Email"),
+                   validator: (String? value) {
+                    if(value!.isEmpty){
+                      return "*Champ obligatoire";
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.emailAddress,
                   onChanged: (value) async {
                     if (value.isNotEmpty) {
-                      final RegExp urlRegex = new RegExp(
-                        r"^https:\/\/.*$",
-                        caseSensitive: false,
-                        multiLine: false,
-                      );
-                      if (!urlRegex.hasMatch(value)) {
+                      if (isValidEmail(value)) {
+                        setState(() {
+                          bottomAnimationValue = 0;
+                          opacityAnimationValue = 1;
+                          paddingAnimationValue = EdgeInsets.only(top: 0);
+                        });
+                        _animationController.forward();
+                      } else {
                         _animationController.reverse();
                         setState(() {
                           bottomAnimationValue = 1;
                           opacityAnimationValue = 0;
                           paddingAnimationValue = EdgeInsets.only(top: 22);
                         });
-                      } else {
-                        setState(() {
-                          bottomAnimationValue = 0;
-                          opacityAnimationValue = 1;
-                          paddingAnimationValue = EdgeInsets.only(top: 0);
-                        });
-                          _animationController.forward();
                       }
                     } else {
                       setState(() {
                         bottomAnimationValue = 0;
                       });
-                      
                     }
                   },
                 ),
@@ -99,7 +102,7 @@ class _LinkField extends State<LinkField>
             alignment: Alignment.bottomCenter,
             child: AnimatedContainer(
               duration: Duration(milliseconds: 500),
-              width: widget.fadeLink ? 0 : 300,
+              width: widget.fadeEmail ? 0 : 300,
               child: TweenAnimationBuilder<double>(
                 tween: Tween(begin: 0, end: bottomAnimationValue),
                 curve: Curves.easeIn,
@@ -119,7 +122,7 @@ class _LinkField extends State<LinkField>
             duration: Duration(milliseconds: 500),
             padding: paddingAnimationValue,
             child: TweenAnimationBuilder<double>(
-              tween: Tween(begin: 0, end: widget.fadeLink ? 0 : 1),
+              tween: Tween(begin: 0, end: widget.fadeEmail ? 0 : 1),
               duration: Duration(milliseconds: 700),
               builder: ((context, value, child) => Opacity(
                     opacity: value,
@@ -142,9 +145,9 @@ class _LinkField extends State<LinkField>
     );
   }
 
- /* bool isValidusername(String username) {
+  bool isValidEmail(String email) {
     return RegExp(
             r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-        .hasMatch(username);
-  }*/
+        .hasMatch(email);
+  }
 }
