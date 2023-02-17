@@ -1,9 +1,9 @@
-import 'package:animated_login/presentation/login_screen.dart';
+import '/presentation/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_login/presentation/widgets/PasswordField2.dart';
-import 'package:animated_login/presentation/widgets/Suivant.dart';
-import 'package:animated_login/presentation/widgets/PasswordField.dart';
-import 'package:animated_login/presentation/widgets/ResetPassword.dart';
+import '/presentation/widgets/PasswordField2.dart';
+import '/presentation/widgets/Suivant.dart';
+import '/presentation/widgets/PasswordField.dart';
+import '/presentation/widgets/ResetPassword.dart';
 
 class ResetPassword2 extends StatefulWidget {
   const ResetPassword2({super.key, required String title});

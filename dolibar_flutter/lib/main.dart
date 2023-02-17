@@ -1,6 +1,8 @@
-import 'package:animated_login/presentation/login_screen.dart';
+import '/presentation/widgets/messages_screen.dart';
+
+import '/presentation/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_login/presentation/widgets/home_page.dart';
+import '/presentation/widgets/home_page.dart';
 import 'presentation/widgets/messages_list.dart';
 
 void main() {

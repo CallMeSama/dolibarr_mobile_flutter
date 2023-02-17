@@ -1,4 +1,6 @@
-import 'package:animated_login/models/message.dart';
+import 'package:animated_login/service/User_service.dart';
+
+import '../models/message.dart';
 
 List<Message> staticMessages = [
   Message(
@@ -52,3 +54,6 @@ List<Message> staticMessages = [
   ),
 
 ];
+
+
+List users = allUsers() as List;
