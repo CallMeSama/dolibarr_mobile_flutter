@@ -1,9 +1,9 @@
 //import 'package:dolibar_flutter/login.dart';
-import 'package:dolibar_flutter/login.dart';
-import 'package:dolibar_flutter/utilisateurs.dart';
+import 'package:dolibar_flutter/Commandes/CommandeHome.dart';
+import 'package:dolibar_flutter/utilisateur.dart/NewUser.dart';
+import 'package:dolibar_flutter/utilisateur.dart/formulaire.dart';
+import 'package:dolibar_flutter/utilisateur.dart/utilisateurs.dart';
 import 'package:flutter/material.dart';
-
-import 'HomePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,13 +14,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
+    return const MaterialApp(
+      home: Commandes(),
     );
   }
 }
