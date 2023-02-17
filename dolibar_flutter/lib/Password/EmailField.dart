@@ -25,6 +25,10 @@ class _EmailFieldState extends State<EmailField>
   late Animation<Color?> _animation;
 
   FocusNode node = FocusNode();
+
+  final String emailPattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+
   @override
   void initState() {
     emailController = widget.emailController;
@@ -86,6 +90,16 @@ class _EmailFieldState extends State<EmailField>
                       setState(() {
                         bottomAnimationValue = 0;
                       });
+                    }
+                  },
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Veuillez saisir votre adresse email';
+                    }
+
+                    RegExp regExp = RegExp(emailPattern);
+                    if (!regExp.hasMatch(value)) {
+                      return "Veuillez saisir une adresse email valide.";
                     }
                   },
                 ),
