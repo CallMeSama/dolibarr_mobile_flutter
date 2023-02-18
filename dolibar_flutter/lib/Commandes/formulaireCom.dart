@@ -1,3 +1,4 @@
+import 'package:animated_login/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 
 class FormulaireCom extends StatefulWidget {
@@ -130,8 +131,12 @@ class _FormulaireComState extends State<FormulaireCom> {
                               EdgeInsets.only(left: 50, right: 50)),
                           backgroundColor:
                               MaterialStatePropertyAll(Color(0xff250432))),
-                      onPressed: () {},
-                      child: const Text("Valider")),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MainScreen(),
+                          ));
+                      },
+                      child: const Text("Ajouter")),
                 ],
               ),
             )));

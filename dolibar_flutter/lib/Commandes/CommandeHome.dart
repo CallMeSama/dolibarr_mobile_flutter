@@ -1,6 +1,4 @@
-import '/utilisateur.dart/NewUser.dart';
 import 'package:flutter/material.dart';
-
 import 'ListCom.dart';
 import 'NewCom.dart';
 
@@ -33,7 +31,7 @@ class Commandes extends StatelessWidget {
                     Navigator.push(
                         context,
                         PageRouteBuilder(
-                            pageBuilder: (_, __, ___) => const ListCom(
+                            pageBuilder: (_, __, ___) => const MyHomePage(
                                   title: 'Liste des commandes',
                                 )));
                   },

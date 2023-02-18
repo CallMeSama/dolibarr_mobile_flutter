@@ -1,3 +1,4 @@
+import 'package:animated_login/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 
 class Formulaire extends StatefulWidget {
@@ -54,7 +55,7 @@ class _FormulaireState extends State<Formulaire> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Ajouter un nouveau produit'),
+          title: Text('Ajouter un utilisateur'),
           backgroundColor: Color(0xff083d18),
         ),
         body: SingleChildScrollView(
@@ -161,11 +162,17 @@ class _FormulaireState extends State<Formulaire> {
                       const Padding(padding: EdgeInsets.all(5)),
                       const SizedBox(height: 16),
                       ElevatedButton(
-                          style: const ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xff083d18))),
-                          onPressed: _submitForm,
-                          child: const Text("creer utilisateur")),
+                        style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(Color(0xff083d18)),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MainScreen(),
+                          ));
+                        },
+                        child: const Text("Ajouter"),
+                      ),
+
                     ],
                   ),
                 ))));

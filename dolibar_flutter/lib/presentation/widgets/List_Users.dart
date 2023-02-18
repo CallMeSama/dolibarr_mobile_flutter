@@ -1,4 +1,3 @@
-import 'package:animated_login/presentation/widgets/home_page.dart';
 import 'package:animated_login/service/User_service.dart';
 import 'package:animated_login/utilisateur.dart/NewUser.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +29,7 @@ class HomeUser extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Liste des utilisateurs'),
-        backgroundColor: Color.fromARGB(234, 4, 34, 75),
+        backgroundColor: Color(0xff083d18),
       ),
       body: const Center(
         child: UsersList(),
@@ -42,7 +41,7 @@ class HomeUser extends StatelessWidget {
             MaterialPageRoute(builder: (context) => NewUser()),
           );
         },
-        backgroundColor: Color.fromARGB(234, 4, 34, 75),
+        backgroundColor: Color(0xff083d18),
         child: const Icon(Icons.add),
       ),
     );
@@ -96,13 +95,13 @@ class UserListWidget extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           final user = userList![index];
           return ListTile(
-            leading: PersonIcon(size: 34.0, color: Color.fromARGB(234, 4, 34, 75)),
+            leading: PersonIcon(size: 34.0, color: Color(0xff083d18)),
             title: Text(
               "${user.firstname} ${user.lastname}",
               // ignore: prefer_const_constructors
               style: TextStyle(
                 fontSize: 16,
-                color: Color.fromARGB(234, 4, 34, 75),
+                color: Color(0xff083d18),
               ),
             ),
             subtitle: Text("${user.login}  ${user.email}"),

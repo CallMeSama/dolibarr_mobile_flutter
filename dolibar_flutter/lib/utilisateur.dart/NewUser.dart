@@ -10,10 +10,6 @@ class NewUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Nouvel Utilisateur"),
-        backgroundColor: Color(0xff083d18),
-      ),
       body: Formulaire(),
     );
   }
