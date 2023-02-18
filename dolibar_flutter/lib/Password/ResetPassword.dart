@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:monapp/Password/EmailField.dart';
-import 'package:monapp/Password/Suivant.dart';
-import 'package:monapp/Password/ResetPassword2.dart';
+import '/Password/EmailField.dart';
+import '/Password/Suivant.dart';
+import '/Password/ResetPassword2.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key, required String title});

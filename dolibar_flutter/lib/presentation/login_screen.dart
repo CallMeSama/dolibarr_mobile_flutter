@@ -1,9 +1,9 @@
-import 'package:animated_login/presentation/widgets/ResetPassword.dart';
-import 'package:animated_login/presentation/widgets/home_page.dart';
-import 'package:animated_login/presentation/widgets/username_field.dart';
-import 'package:animated_login/presentation/widgets/get_started_button.dart';
-import 'package:animated_login/presentation/widgets/messages_screen.dart';
-import 'package:animated_login/presentation/widgets/password_field.dart';
+import 'package:animated_login/presentation/widgets/List_Users.dart';
+import '../presentation/widgets/ResetPassword.dart';
+import '../presentation/widgets/username_field.dart';
+import '../presentation/widgets/get_started_button.dart';
+import '../presentation/widgets/messages_screen.dart';
+import '../presentation/widgets/password_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'dart:convert';
@@ -23,31 +23,34 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   late TextEditingController usernameController;
   late TextEditingController passwordController;
-  late TextEditingController linkController;
 
   KeyboardVisibilityController keyboardVisibilityController =
       KeyboardVisibilityController();
   bool _isKeyboardVisible = false;
 
   //Authentification des users de dolibarr
-  Future<String> connectToDolibarr(String username, String password) async {
-    final response = await http.post(
-      Uri.parse('https://dolimobil.with6.dolicloud.com/api/index.php/login'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        'login': username,
-        'password': password,
-      }),
-    );
+  Future<Object> connectToDolibarr(String username, String password) async {
+    var session = SessionManager();
+    http.Response response = await http.Client().post(
+        Uri.parse('https://dolimobil.with6.dolicloud.com/api/index.php/login'),
+        body: ({
+          'login': username,
+          'password': password,
+        }));
+
+    final donnee = json.decode(response.body);
 
     if (response.statusCode == 200) {
-      final Map<String, dynamic> data = json.decode(response.body);
-      return data['success']['token'];
-    } else {
-      throw Exception('Failed to connect to Dolibarr server');
+      session.set("islogin", true);
+      session.set("name", username);
+      session.set("token", donnee['success']['token']);
+      return true;
     }
+    if (response.statusCode == 403) {
+      return false;
+    }
+    await session.set("token", "");
+    return false;
   }
 
   double _elementsOpacity = 1;
@@ -57,7 +60,6 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     usernameController = TextEditingController();
     passwordController = TextEditingController();
-    linkController = TextEditingController();
     keyboardVisibilityController.onChange.listen((bool visible) {
       setState(() {
         _isKeyboardVisible = visible;
@@ -179,31 +181,32 @@ class _LoginScreenState extends State<LoginScreen> {
                                       elementsOpacity: _elementsOpacity,
                                       onTap: () async {
                                         if (_formKey.currentState!.validate()) {
-                                          setState(() {
-                                            _elementsOpacity = 0;
-                                          });
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const MainScreen()),
+                                          var auth = await connectToDolibarr(
+                                            usernameController.text,
+                                            passwordController.text,
                                           );
-                                          ;
-                                          try {
-                                            String token =
-                                                await connectToDolibarr(
-                                                    usernameController.text,
-                                                    passwordController.text);
+                                          if (auth.toString() == 'false') {
+                                            usernameController.clear();
+                                            passwordController.clear();
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      HomePage()),
+                                                      LoginScreen()),
                                             );
-                                          } catch (e) {
-                                            // handle connection error
-                                            print(e);
+                                          } else {
+                                            if (auth.toString() == 'true') {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        MainScreen()),
+                                              );
+                                            }
                                           }
+                                          /*setState(() {
+                                        _elementsOpacity = 0;
+                                      });*/
                                         }
                                       },
                                       onAnimatinoEnd: () async {

@@ -1,3 +1,5 @@
+import 'package:animated_login/presentation/widgets/List_Users.dart';
+
 import '/utilisateur.dart/NewUser.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +35,7 @@ class Utilisateurs extends StatelessWidget {
                         Navigator.push(
                             context,
                             PageRouteBuilder(
-                                pageBuilder: (_, __, ___) => const ListUsers(
+                                pageBuilder: (_, __, ___) => const HomeUser(
                                       title: 'Liste Users',
                                     )));
                       },

@@ -1,4 +1,4 @@
-import 'package:animated_login/presentation/widgets/colors.dart';
+import '/presentation/widgets/colors.dart';
 import 'package:flutter/material.dart';
 
 class EmailField extends StatefulWidget {

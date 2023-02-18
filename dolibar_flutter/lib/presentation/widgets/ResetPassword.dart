@@ -1,8 +1,8 @@
-import 'package:animated_login/presentation/login_screen.dart';
+import '/presentation/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_login/presentation/widgets/EmailField.dart';
-import 'package:animated_login/presentation/widgets/Suivant.dart';
-import 'package:animated_login/presentation/widgets/ResetPassword2.dart';
+import '/presentation/widgets/EmailField.dart';
+import '/presentation/widgets/Suivant.dart';
+import '/presentation/widgets/ResetPassword2.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key, required String title});
@@ -16,6 +16,7 @@ class _ResetPasswordState extends State<ResetPassword> {
   double _elementsOpacity = 1;
   bool loadingBallAppear = false;
   double loadingBallSize = 1;
+  // ignore: unused_field
   final _formKey = GlobalKey<FormState>();
 
   @override

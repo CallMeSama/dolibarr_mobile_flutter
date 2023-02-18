@@ -14,6 +14,7 @@ class PasswordField extends StatefulWidget {
 }
 
 class _PasswordFieldState extends State<PasswordField> {
+  // ignore: unused_field
   String? _password = null;
   double bottomAnimationValue = 0;
   double opacityAnimationValue = 0;
