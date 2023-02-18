@@ -1,3 +1,7 @@
+import 'package:animated_login/Commandes/CommandeHome.dart';
+import 'package:animated_login/utilisateur.dart/utilisateurs.dart';
+
+import '../ProductModule/products.dart';
 import '/data/data.dart';
 import 'package:flutter/material.dart';
 
@@ -27,10 +31,32 @@ class ModuleGrid extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
-                        module[index].text,
-                        style: const TextStyle(color: Colors.white),
-                      ),
+                      TextButton(
+                          onPressed: () {
+                            if (index == 0) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Products()),
+                              );
+                            } else if (index == 1) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Utilisateurs()),
+                              );
+                            } else if (index == 2) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Commandes()),
+                              );
+                            }
+                          },
+                          child: Text(
+                            module[index].text,
+                            style: const TextStyle(color: Colors.white),
+                          )),
                     ],
                   ),
                   Column(

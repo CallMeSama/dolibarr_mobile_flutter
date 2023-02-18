@@ -1,10 +1,10 @@
+import '/utilisateur.dart/NewUser.dart';
 import 'package:flutter/material.dart';
-import '/ProductModule/ProductForm.dart';
 
-import 'Liste.dart';
+import 'ListUsers.dart';
 
-class Products extends StatelessWidget {
-  const Products({
+class Utilisateurs extends StatelessWidget {
+  const Utilisateurs({
     super.key,
   });
 
@@ -12,57 +12,59 @@ class Products extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          elevation: 3,
-          title: const Text("Produits"),
-          backgroundColor: Color(0xFF6B0B0B),
+          title: const Text("Utilisateurs"),
+          backgroundColor: Color(0xff083d18),
         ),
         body: SizedBox.expand(
-            child: Container(
-                decoration: const BoxDecoration(color: Colors.white),
-                child: Center(
-                    child: Column(
+          child: Container(
+            decoration: const BoxDecoration(color: Colors.white),
+            child: Center(
+              child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton.icon(
                       style: const ButtonStyle(
-                          padding: MaterialStatePropertyAll(EdgeInsets.all(20)),
+                          padding: MaterialStatePropertyAll(EdgeInsets.only(
+                              top: 20, bottom: 20, left: 30, right: 30)),
                           backgroundColor:
-                              MaterialStatePropertyAll(Color(0xFF6B0B0B))),
+                              MaterialStatePropertyAll(Color(0xff083d18))),
                       // ignore: avoid_print
                       onPressed: () {
                         Navigator.push(
                             context,
                             PageRouteBuilder(
-                                pageBuilder: (_, __, ___) => const MyHomePage(
-                                      title: 'Liste des Produits',
+                                pageBuilder: (_, __, ___) => const ListUsers(
+                                      title: 'Liste Users',
                                     )));
                       },
+
                       label: const Text(
-                        "Liste des produits",
+                        "Liste Utilisateurs",
                         style: TextStyle(fontSize: 20),
                       ),
-                      icon: const Icon(Icons.list),
+                      icon: const Icon(Icons.list_rounded),
                     ),
                     ElevatedButton.icon(
                       style: const ButtonStyle(
                           padding: MaterialStatePropertyAll(EdgeInsets.all(20)),
                           backgroundColor:
-                              MaterialStatePropertyAll(Color(0xFF6B0B0B))),
+                              MaterialStatePropertyAll(Color(0xff083d18))),
                       // ignore: avoid_print
                       onPressed: () {
                         Navigator.push(
                             context,
                             PageRouteBuilder(
-                                pageBuilder: (_, __, ___) =>
-                                    const AddProductForm()));
+                                pageBuilder: (_, __, ___) => const NewUser()));
                       },
                       label: const Text(
-                        "Nouveau produit",
+                        "Nouvel Utilisateur",
                         style: TextStyle(fontSize: 20),
                       ),
                       icon: const Icon(Icons.add_task),
                     ),
-                  ],
-                )))));
+                  ]),
+            ),
+          ),
+        ));
   }
 }

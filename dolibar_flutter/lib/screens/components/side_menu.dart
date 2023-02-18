@@ -1,4 +1,6 @@
+import 'package:animated_login/Commandes/CommandeHome.dart';
 import 'package:animated_login/ProductModule/products.dart';
+import 'package:animated_login/utilisateur.dart/utilisateurs.dart';
 import 'package:flutter/material.dart';
 import 'package:ternav_icons/ternav_icons.dart';
 
@@ -44,12 +46,22 @@ class SideMenu extends StatelessWidget {
           DrawerListTile(
             icon: TernavIcons.lightOutline.user_2,
             title: "Utilisateurs",
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Utilisateurs()),
+              );
+            },
           ),
           DrawerListTile(
             icon: TernavIcons.lightOutline.chat,
             title: "Commandes",
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Commandes()),
+              );
+            },
           ),
           DrawerListTile(
             icon: TernavIcons.lightOutline.logout,
