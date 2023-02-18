@@ -6,18 +6,18 @@ import '../models/module_model.dart';
 
 final List<Module> module = [
   Module(
-      text: "PRODUITS",
+      text: "Produits",
       imageUrl: "assets/images/pic/img1.png",
       backImage: "assets/images/box/1.png",
-      color: kDarkBlue),
+      color: kDarkBlue, textSize: 15),
   Module(
-      text: "UTILISATEURS",
+      text: "Utilisateurs",
       imageUrl: "assets/images/pic/img2.png",
       backImage: "assets/images/box/2.png",
-      color: kOrange),
+      color: kOrange, textSize: 15),
   Module(
-      text: "COMMANDES",
+      text: "Commandes",
       imageUrl: "assets/images/pic/img3.png",
       backImage: "assets/images/box/3.png",
-      color: kGreen),
+      color: kGreen, textSize: 15),
 ];

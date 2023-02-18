@@ -10,6 +10,6 @@ class Module {
     required this.text,
     required this.imageUrl,
     required this.backImage,
-    required this.color,
+    required this.color, required textSize,
   });
 }
