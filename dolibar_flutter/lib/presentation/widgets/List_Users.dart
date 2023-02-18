@@ -1,5 +1,6 @@
 import 'package:animated_login/presentation/widgets/home_page.dart';
 import 'package:animated_login/service/User_service.dart';
+import 'package:animated_login/utilisateur.dart/NewUser.dart';
 import 'package:flutter/material.dart';
 import '../../models/User.dart';
 
@@ -22,7 +23,7 @@ class PersonIcon extends StatelessWidget {
 }
 
 class HomeUser extends StatelessWidget {
-  const HomeUser({super.key});
+  const HomeUser({super.key, required String title});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class HomeUser extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(builder: (context) => NewUser()),
           );
         },
         backgroundColor: Color.fromARGB(234, 4, 34, 75),

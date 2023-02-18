@@ -10,6 +10,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
+import '../screens/main_screen.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -186,7 +188,7 @@ Future<http.Response> logoutFromApi(String token) async {
                                         if(auth.toString()== 'true'){
                                           Navigator.push(
                                             context,
-                                            MaterialPageRoute(builder: (context) => HomeUser()),
+                                            MaterialPageRoute(builder: (context) => MainScreen()),
                                           );
                                         }
                                         
