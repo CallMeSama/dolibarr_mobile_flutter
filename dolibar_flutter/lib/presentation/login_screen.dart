@@ -160,7 +160,7 @@ Future<void>logout() async {
                                     );
                                   },
                                   child: Container(
-                                    margin: EdgeInsets.only(left: 150),
+                                    margin: EdgeInsets.only(left: 100),
                                     child: Text('Mot de passe oublié ?', style: TextStyle(color: Color.fromARGB(255, 28, 85, 136), decoration: TextDecoration.underline, decorationThickness: 1),textAlign: TextAlign.right,),
                                   ),
                                 ),
