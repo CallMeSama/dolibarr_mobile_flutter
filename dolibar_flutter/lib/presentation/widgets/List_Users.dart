@@ -2,7 +2,6 @@ import 'package:animated_login/presentation/widgets/home_page.dart';
 import 'package:animated_login/service/User_service.dart';
 import 'package:flutter/material.dart';
 import '../../models/User.dart';
-import 'addUser.dart';
 
 
 class PersonIcon extends StatelessWidget {
@@ -39,7 +38,7 @@ class HomeUser extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => UserForm()),
+            MaterialPageRoute(builder: (context) => HomePage()),
           );
         },
         backgroundColor: Color.fromARGB(234, 4, 34, 75),

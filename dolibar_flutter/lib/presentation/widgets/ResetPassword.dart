@@ -16,6 +16,7 @@ class _ResetPasswordState extends State<ResetPassword> {
   double _elementsOpacity = 1;
   bool loadingBallAppear = false;
   double loadingBallSize = 1;
+  // ignore: unused_field
   final _formKey = GlobalKey<FormState>();
 
   @override

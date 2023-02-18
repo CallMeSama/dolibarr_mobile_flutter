@@ -1,9 +1,6 @@
-import '/presentation/widgets/messages_screen.dart';
 
-import '/presentation/login_screen.dart';
 import 'package:flutter/material.dart';
 import '/presentation/widgets/home_page.dart';
-import 'presentation/widgets/messages_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +18,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.black),
           textTheme: TextTheme(
-            subtitle1: TextStyle(color: Colors.black), //<-- SEE HERE
+            titleMedium: TextStyle(color: Colors.black), //<-- SEE HERE
           ),
           inputDecorationTheme: InputDecorationTheme(
             hintStyle: TextStyle(color: Colors.black.withOpacity(0.7)),
