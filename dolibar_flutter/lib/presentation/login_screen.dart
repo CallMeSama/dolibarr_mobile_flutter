@@ -44,6 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
       session.set("islogin", true);
       session.set("name", username);
       session.set("token", donnee['success']['token']);
+      //pour la déconnexion
       return true;
     }
     if (response.statusCode == 403) {
@@ -51,6 +52,16 @@ class _LoginScreenState extends State<LoginScreen> {
     }
     await session.set("token", "");
     return false;
+}
+
+//Gestion déconnexion
+Future<http.Response> logoutFromApi(String token) async {
+  var url = Uri.parse('https://dolimobil.with6.dolicloud.com/api/index.php/logout');
+  var headers = {'Authorization': 'Bearer ' + token};
+
+  var response = await http.delete(url, headers: headers);
+  
+  return response;
 }
 
   double _elementsOpacity = 1;

@@ -42,7 +42,10 @@ dependencies:
   carousel_slider: ^4.2.1
   carousel_indicator: ^1.0.6
   flutter_keyboard_visibility: ^5.4.0
-
+  fl_chart: ^0.36.1
+  ternav_icons: ^1.0.0
+  dashboard: ^0.0.3+1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
